@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 import uvicorn
 import os
 from fastapi.middleware.cors import CORSMiddleware
+import pytz
 app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
@@ -23,11 +24,12 @@ if not MONGO_URL:
 client = MongoClient(MONGO_URL)
 db = client["meal_system"]
 participants = db["participants"]
+IST = pytz.timezone("Asia/Kolkata")
 def get_meal_slot():
-    now = datetime.now().time()
+    now = datetime.now(IST).time()   
     if time(12, 0) <= now <= time(14, 0):
         return "meal_lunch_day1"
-    if time(19, 0) <= now <= time(22, 0):
+    if time(19, 0) <= now <= time(21, 0):
         return "meal_dinner_day1"
     if time(8, 0) <= now <= time(10, 0):
         return "meal_breakfast_day2"
