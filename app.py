@@ -29,7 +29,7 @@ def get_meal_slot():
     now = datetime.now(IST).time()   
     if time(12, 0) <= now <= time(14, 0):
         return "meal_lunch_day1"
-    if time(19, 0) <= now <= time(21, 0):
+    if time(19, 0) <= now <= time(22, 0):
         return "meal_dinner_day1"
     if time(8, 0) <= now <= time(10, 0):
         return "meal_breakfast_day2"
@@ -59,3 +59,4 @@ def verify(qr_code: str):
     }
 if __name__ == "__main__":
     uvicorn.run("app:app", host="0.0.0.0", port=8000, reload=True)
+
