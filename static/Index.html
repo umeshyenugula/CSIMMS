@@ -272,7 +272,7 @@ function verifyManual() {
 /* API VERIFY */
 async function verify(code) {
     update("⏳ Verifying…");
-    let res = await fetch(`http://localhost:8000/verify/${code}`);
+    let res = await fetch(`http://csimms.vercel.app/verify/${code}`);
     let data = await res.json();
     showModal(data);
 }
@@ -309,3 +309,4 @@ function closeModal() {
 </script>
 </body>
 </html>
+
